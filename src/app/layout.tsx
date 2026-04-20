@@ -10,7 +10,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thibaultgomez.com"),
+  metadataBase: new URL("https://www.thibault-gomez.fr"),
   title: siteConfig.meta.title,
   description: siteConfig.meta.description,
   keywords: [
@@ -66,7 +66,7 @@ const jsonLd = {
   name: "Thibault GOMEZ",
   jobTitle: "Growth Manager",
   description: siteConfig.meta.description,
-  url: "https://thibaultgomez.com",
+  url: "https://www.thibault-gomez.fr",
   email: siteConfig.email,
   sameAs: [siteConfig.linkedin],
   address: {

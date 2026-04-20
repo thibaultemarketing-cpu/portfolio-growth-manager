@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thibaultgomez.com/sitemap.xml
+Sitemap: https://www.thibault-gomez.fr/sitemap.xml
