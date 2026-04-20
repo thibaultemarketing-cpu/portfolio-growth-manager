@@ -26,6 +26,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# source images (not used by the site, too large for GitHub)
+/Image/
+
 # vercel
 .vercel
 
