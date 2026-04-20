@@ -1,0 +1,382 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Logo slider animation */
+@keyframes logo-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-slider {
+  animation: logo-slide 25s linear infinite;
+  width: max-content;
+}
+
+.keywords-slider {
+  animation: logo-slide 20s linear infinite;
+  width: max-content;
+}
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-warm-50 font-sans;
+    font-weight: 500;
+    color: #393c53;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: larken, Georgia, serif;
+  }
+
+  ::selection {
+    @apply bg-brand-200/50 text-brand-900;
+  }
+}
+
+@layer components {
+  .keyword {
+    font-family: "montserrat", var(--font-outfit), system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+  }
+
+  .section-container {
+    @apply max-w-5xl mx-auto px-5 sm:px-8;
+  }
+
+  .section-padding {
+    @apply py-section lg:py-section-lg;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #2A32BF, #4a4ad9, #7b7fff);
+  }
+
+  .gradient-title {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      #1c1714 0%,
+      #3d3530 30%,
+      #2A32BF 60%,
+      #4a4ad9 100%
+    );
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 sm:p-8 border border-warm-200/80
+           shadow-soft transition-all duration-300
+           hover:shadow-soft-md hover:border-warm-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+           text-white font-semibold rounded-xl
+           transition-all duration-300 ease-out
+           hover:shadow-soft-xl hover:-translate-y-0.5
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-warm-50
+           active:scale-[0.97] active:translate-y-0;
+    background: linear-gradient(135deg, #1c1714 0%, #2d2824 40%, #2A32BF 100%);
+    background-size: 200% auto;
+  }
+
+  .btn-primary:hover {
+    background-position: right center;
+    box-shadow: 0 8px 30px -6px rgba(42, 50, 191, 0.35);
+  }
+
+  .btn-primary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateX(3px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+           bg-white/80 backdrop-blur-sm text-warm-900 font-semibold rounded-xl
+           border border-warm-300/80
+           transition-all duration-300 ease-out
+           hover:bg-white hover:border-warm-400 hover:shadow-soft-md hover:-translate-y-0.5
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warm-400 focus-visible:ring-offset-2 focus-visible:ring-offset-warm-50
+           active:scale-[0.97] active:translate-y-0;
+  }
+
+  .btn-secondary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-secondary:hover svg {
+    transform: translateY(-2px);
+  }
+
+  .headline-guillemets::before {
+    content: "\00AB";
+    font-family: var(--font-display), serif;
+    font-size: 1.15em;
+    margin-right: 0.15em;
+    -webkit-text-fill-color: rgba(42, 50, 191, 0.2);
+    background: none;
+  }
+
+  .headline-guillemets::after {
+    content: "\00BB";
+    font-family: var(--font-display), serif;
+    font-size: 1.15em;
+    margin-left: 0.15em;
+    -webkit-text-fill-color: rgba(42, 50, 191, 0.2);
+    background: none;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-1 text-body-sm font-medium
+           bg-brand-50 text-brand-700 rounded-lg border border-brand-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-warm-300 rounded-xl
+           text-warm-900 placeholder:text-warm-400
+           transition-all duration-200
+           focus:outline-none focus:border-brand-400 focus:bg-white
+           focus:ring-2 focus:ring-brand-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Constellation card animations */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.constellation-card {
+  opacity: 0;
+  animation:
+    popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    gentleFloat 5s ease-in-out 0.8s infinite;
+}
+
+/* Case Studies scroll animations */
+.cs-row .cs-text {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.cs-row .cs-image {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease-out 0.15s, transform 0.7s ease-out 0.15s;
+}
+
+.cs-row-reversed .cs-text {
+  transform: translateX(40px);
+}
+
+.cs-row-reversed .cs-image {
+  transform: translateX(-40px);
+}
+
+.cs-row.cs-visible .cs-text,
+.cs-row.cs-visible .cs-image {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Skills section animations */
+.skill-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-card.skill-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* TechStack animations */
+.ts-item {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.ts-item.ts-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* AboutMe section animations */
+.about-section .about-photo {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.about-section .about-text {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease-out 0.15s, transform 0.7s ease-out 0.15s;
+}
+
+.about-section.about-visible .about-photo,
+.about-section.about-visible .about-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* DeepDive section animations */
+.dd-item {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.dd-item.dd-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MySearch section animations */
+.search-section .search-desc {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.search-section .search-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.search-section.search-visible .search-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-section.search-visible .search-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-section.search-visible .search-card:nth-child(2) { transition-delay: 0.1s; }
+.search-section.search-visible .search-card:nth-child(3) { transition-delay: 0.2s; }
+.search-section.search-visible .search-card:nth-child(4) { transition-delay: 0.3s; }
+
+/* Method section animations */
+.method-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.method-card.method-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.method-card .method-point {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.method-card.method-visible .method-point {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* SCROLL REVEAL — unified premium animation system   */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Base: all reveal elements start hidden */
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Variants — initial states */
+.reveal-up { transform: translateY(40px); }
+.reveal-down { transform: translateY(-40px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.92); }
+.reveal-scale-up { transform: scale(0.92) translateY(30px); }
+
+/* Visible state — applied by IntersectionObserver */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Staggered children — cards, grids, lists */
+.reveal-stagger > .reveal { transition-delay: calc(var(--reveal-i, 0) * 100ms); }
+.reveal-stagger-fast > .reveal { transition-delay: calc(var(--reveal-i, 0) * 70ms); }
+.reveal-stagger-slow > .reveal { transition-delay: calc(var(--reveal-i, 0) * 140ms); }
+
+/* Delay modifiers */
+.reveal-delay-1 { transition-delay: 100ms !important; }
+.reveal-delay-2 { transition-delay: 200ms !important; }
+.reveal-delay-3 { transition-delay: 300ms !important; }
+.reveal-delay-4 { transition-delay: 400ms !important; }
