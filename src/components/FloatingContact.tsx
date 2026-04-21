@@ -47,12 +47,13 @@ export default function FloatingContact() {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-20 h-20 rounded-full bg-brand-600 hover:bg-brand-700 text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 ${
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-brand-600 hover:bg-brand-700 text-white shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105 ${
           isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
         }`}
         aria-label="Ouvrir le formulaire de contact"
       >
-        <MessageCircle size={32} />
+        <MessageCircle size={24} className="sm:hidden" />
+        <MessageCircle size={32} className="hidden sm:block" />
       </button>
 
       {/* Backdrop */}
@@ -90,7 +91,7 @@ export default function FloatingContact() {
           </div>
 
           {/* Info badges */}
-          <div className="relative z-10 px-6 pt-5 pb-2 flex flex-wrap gap-2">
+          <div className="relative z-10 px-6 pt-5 pb-2 flex flex-nowrap gap-2">
             <div className="flex items-center gap-1.5 px-3 py-1 bg-white/8 rounded-full border border-white/10">
               <Clock size={12} className="text-brand-400" />
               <span className="text-[0.72rem] font-medium text-white/60">Disponible immédiatement</span>
