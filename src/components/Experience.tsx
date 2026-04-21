@@ -35,9 +35,9 @@ export default function Experience() {
   return (
     <section id="experience" className="section-padding" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="flex items-end justify-between mb-10 reveal reveal-up">
+        <div className="flex flex-col items-center sm:flex-row sm:items-end sm:justify-between mb-10 reveal reveal-up">
           <SectionHeader title={experiences.title} />
-          <div className="flex gap-2 shrink-0 ml-4">
+          <div className="flex gap-2 shrink-0 sm:ml-4">
             <button
               onClick={() => scroll("left")}
               className="w-10 h-10 rounded-full border border-warm-300 flex items-center justify-center hover:bg-warm-100 transition-colors"

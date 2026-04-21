@@ -96,7 +96,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileOpen && (
-        <div className="lg:hidden fixed inset-x-4 sm:inset-x-6 top-20 z-40 bg-white/60 backdrop-blur-2xl rounded-2xl border border-white/40 shadow-soft-lg overflow-hidden">
+        <div className="lg:hidden fixed inset-x-4 sm:inset-x-6 top-20 z-40 bg-warm-50 backdrop-blur-xl rounded-2xl border border-warm-200/60 shadow-soft-xl overflow-hidden">
           <div className="px-6 py-6 flex flex-col gap-1">
             {navigation.map((item) => (
               <a
@@ -120,10 +120,10 @@ export default function Navigation() {
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center mt-2 w-12 h-12 bg-[#0A66C2] hover:bg-[#004182] text-white rounded-xl transition-all"
-              aria-label="LinkedIn"
+              className="inline-flex items-center justify-center gap-2 mt-2 px-6 py-3 text-body-md font-medium text-white bg-[#0A66C2] hover:bg-[#004182] rounded-xl transition-all shadow-sm"
             >
-              <Linkedin size={22} />
+              <Linkedin size={16} />
+              Mon profil LinkedIn
             </a>
           </div>
         </div>

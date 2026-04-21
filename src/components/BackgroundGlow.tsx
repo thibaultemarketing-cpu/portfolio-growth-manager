@@ -8,14 +8,62 @@ export default function BackgroundGlow() {
   const targetRef = useRef({ x: 0.5, y: 0.5 });
   const currentRef = useRef({ x: 0.5, y: 0.5 });
   const [prefersReduced, setPrefersReduced] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReduced(mq.matches);
     const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
     mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+
+    const touchMq = window.matchMedia("(hover: none)");
+    setIsMobile(touchMq.matches);
+    const touchHandler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    touchMq.addEventListener("change", touchHandler);
+
+    return () => {
+      mq.removeEventListener("change", handler);
+      touchMq.removeEventListener("change", touchHandler);
+    };
   }, []);
+
+  const drawStatic = useCallback(
+    (ctx: CanvasRenderingContext2D, w: number, h: number) => {
+      ctx.clearRect(0, 0, w, h);
+      const spacing = 44;
+
+      // Static grid lines
+      ctx.save();
+      ctx.strokeStyle = "rgba(200,190,178,0.18)";
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < w; x += spacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+      for (let y = 0; y < h; y += spacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // Static dot grid
+      ctx.save();
+      ctx.fillStyle = "rgba(200,190,178,0.18)";
+      for (let x = 0; x < w; x += spacing) {
+        for (let y = 0; y < h; y += spacing) {
+          ctx.beginPath();
+          ctx.arc(x, y, 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.restore();
+    },
+    []
+  );
 
   const draw = useCallback(
     (ctx: CanvasRenderingContext2D, w: number, h: number, mx: number, my: number) => {
@@ -122,6 +170,21 @@ export default function BackgroundGlow() {
     resize();
     window.addEventListener("resize", resize);
 
+    if (isMobile) {
+      // Mobile: draw static grid once, redraw on resize only
+      drawStatic(ctx, window.innerWidth, window.innerHeight);
+      const resizeStatic = () => {
+        resize();
+        drawStatic(ctx, window.innerWidth, window.innerHeight);
+      };
+      window.addEventListener("resize", resizeStatic);
+      return () => {
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("resize", resizeStatic);
+      };
+    }
+
+    // Desktop: animated loop with mouse tracking
     const handleMouseMove = (e: MouseEvent) => {
       targetRef.current = {
         x: e.clientX / window.innerWidth,
@@ -151,7 +214,7 @@ export default function BackgroundGlow() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [prefersReduced, draw]);
+  }, [prefersReduced, isMobile, draw, drawStatic]);
 
   if (prefersReduced) return null;
 

@@ -23,7 +23,7 @@ export const siteConfig = {
 
   // ✏️ Meta / SEO
   meta: {
-    title: "Thibault GOMEZ | Growth Manager & Responsable Marketing Digital — 8 ans e-commerce B2C",
+    title: "Thibault GOMEZ | Growth Manager & Responsable Marketing Digital",
     description:
       "Growth Manager avec 8 ans d'expérience en e-commerce B2C. Expert SEO, Amazon Ads (ACoS 14%), CRO et Data/BI. Basé à Toulon, disponible en télétravail. Découvrez mon parcours et mes résultats.",
   },

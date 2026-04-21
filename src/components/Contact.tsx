@@ -41,7 +41,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-padding bg-warm-200/60" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* CTA Card */}
         <div className="relative overflow-hidden rounded-3xl reveal reveal-scale-up bg-[linear-gradient(135deg,#141210_0%,#1c1714_25%,#2d2824_50%,#2A32BF_85%,#3a3fd4_100%)] border border-white/10 shadow-soft-lg px-6 py-12 sm:px-12 sm:py-14 text-center mb-12">
           <div className="absolute inset-0 pointer-events-none">
@@ -63,7 +63,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-14 items-center">
           {/* Form */}
           <div className="bg-white rounded-2xl border border-warm-200/60 shadow-soft-md p-7 sm:p-9 reveal reveal-left">
             <h3 className="text-display-sm gradient-title mb-5">Me contacter</h3>
@@ -75,7 +75,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-2 px-3.5 py-1.5 bg-emerald-50 rounded-full border border-emerald-200">
                 <Zap size={13} className="text-emerald-600" />
-                <span className="text-[0.76rem] font-medium text-emerald-700">Réponse sous 24h</span>
+                <span className="text-[0.76rem] font-medium text-emerald-700">Réponse rapide</span>
               </div>
             </div>
 
@@ -187,38 +187,59 @@ export default function Contact() {
                     <Linkedin size={16} />
                     LinkedIn
                   </a>
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="flex items-center gap-2 text-body-sm text-warm-500 hover:text-brand-600 transition-colors"
-                  >
-                    <Mail size={16} />
-                    Email
-                  </a>
                 </div>
               </div>
             </form>
+
+            {/* Direct contact info */}
+            <div className="mt-6 pt-5 border-t border-warm-200/60 flex flex-col gap-3">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-3 px-4 py-3 bg-violet-50 rounded-xl border border-violet-200/60 hover:border-violet-300 hover:shadow-soft-md hover:scale-[1.01] transition-all duration-300"
+              >
+                <div className="w-9 h-9 rounded-lg bg-violet-500 flex items-center justify-center shrink-0">
+                  <Mail size={15} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-[0.68rem] font-medium text-violet-500 leading-tight">Email</p>
+                  <p className="text-[0.82rem] font-semibold text-warm-900 leading-tight">{siteConfig.email}</p>
+                </div>
+              </a>
+              <a
+                href="tel:+33623520550"
+                className="flex items-center gap-3 px-4 py-3 bg-rose-50 rounded-xl border border-rose-200/60 hover:border-rose-300 hover:shadow-soft-md hover:scale-[1.01] transition-all duration-300"
+              >
+                <div className="w-9 h-9 rounded-lg bg-rose-500 flex items-center justify-center shrink-0">
+                  <MessageCircle size={15} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-[0.68rem] font-medium text-rose-500 leading-tight">Téléphone</p>
+                  <p className="text-[0.82rem] font-semibold text-warm-900 leading-tight">06.23.52.05.50</p>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Photo + orbiting badges */}
           <div className="reveal reveal-right reveal-delay-2">
             <div className="relative flex items-center justify-center py-10 px-6 sm:px-10">
-              {/* Decorative orbit ring */}
-              <div className="absolute inset-0 m-auto w-[92%] h-[88%] rounded-full border border-dashed border-warm-300/50 pointer-events-none" />
+              {/* Decorative orbit ring — desktop only */}
+              <div className="hidden lg:block absolute inset-0 m-auto w-[92%] h-[88%] rounded-full border border-dashed border-warm-300/50 pointer-events-none" />
 
               {/* Photo */}
               <div className="relative z-10">
                 <Image
                   src="/images/Thibault-36-Contact-VF.png"
                   alt="Contacter Thibault GOMEZ — Growth Manager disponible en CDI"
-                  width={600}
-                  height={720}
-                  className="w-full h-auto object-contain"
+                  width={720}
+                  height={860}
+                  className="w-full lg:w-[85%] mx-auto h-auto object-contain"
                 />
               </div>
 
-              {/* Orbiting constellation cards */}
+              {/* Orbiting constellation cards — desktop only */}
               {/* Top */}
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '0.3s' }}>
+              <div className="hidden lg:block absolute -top-1 left-1/2 -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '0.3s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center shrink-0">
                     <Zap size={18} className="text-white" />
@@ -231,7 +252,7 @@ export default function Contact() {
               </div>
 
               {/* Right */}
-              <div className="absolute top-[40%] -right-2 sm:-right-6 z-20 constellation-card" style={{ animationDelay: '0.7s' }}>
+              <div className="hidden lg:block absolute top-[40%] -right-6 z-20 constellation-card" style={{ animationDelay: '0.7s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-sky-500 flex items-center justify-center shrink-0">
                     <Mail size={18} className="text-white" />
@@ -244,7 +265,7 @@ export default function Contact() {
               </div>
 
               {/* Left */}
-              <div className="absolute top-[25%] -left-2 sm:-left-6 z-20 constellation-card" style={{ animationDelay: '0.5s' }}>
+              <div className="hidden lg:block absolute top-[25%] -left-6 z-20 constellation-card" style={{ animationDelay: '0.5s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-violet-500 flex items-center justify-center shrink-0">
                     <MessageCircle size={18} className="text-white" />
@@ -257,7 +278,7 @@ export default function Contact() {
               </div>
 
               {/* Bottom left */}
-              <div className="absolute bottom-[10%] left-0 sm:-left-6 z-20 constellation-card" style={{ animationDelay: '0.9s' }}>
+              <div className="hidden lg:block absolute bottom-[10%] -left-6 z-20 constellation-card" style={{ animationDelay: '0.9s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
                     <Linkedin size={18} className="text-white" />
@@ -270,7 +291,7 @@ export default function Contact() {
               </div>
 
               {/* Bottom right */}
-              <div className="absolute bottom-[5%] right-0 sm:-right-6 z-20 constellation-card" style={{ animationDelay: '1.1s' }}>
+              <div className="hidden lg:block absolute bottom-[5%] -right-6 z-20 constellation-card" style={{ animationDelay: '1.1s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center shrink-0">
                     <Clock size={18} className="text-white" />

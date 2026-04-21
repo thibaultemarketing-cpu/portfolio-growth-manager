@@ -6,7 +6,7 @@ import { heroContent, siteConfig } from "@/data/content";
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center pt-20 sm:pt-16">
+    <section className="relative flex items-center pt-20 sm:pt-16 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-warm-200/40 rounded-full blur-[120px]" />
@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10 py-10 sm:py-16 lg:py-24">
-        <div className="grid lg:grid-cols-12 gap-14 sm:gap-16 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-16 lg:gap-8 items-center">
           {/* Left — Text content */}
           <div className="lg:col-span-6 text-center lg:text-left">
             {/* Name + role */}
@@ -48,10 +48,10 @@ export default function Hero() {
           </div>
 
           {/* Right — Photo + skill constellation */}
-          <div className="lg:col-span-6 relative flex justify-center lg:justify-end animate-fade-in [animation-delay:200ms]">
+          <div className="lg:col-span-6 relative flex flex-col items-center lg:justify-end animate-fade-in [animation-delay:200ms]">
             <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-none py-6 sm:py-10 px-2 sm:px-10">
-              {/* Orbit ring */}
-              <div className="absolute inset-0 m-auto w-[92%] h-[88%] rounded-full border border-dashed border-warm-300/50 pointer-events-none" />
+              {/* Orbit ring — desktop only */}
+              <div className="hidden lg:block absolute inset-0 m-auto w-[92%] h-[88%] rounded-full border border-dashed border-warm-300/50 pointer-events-none" />
 
               {/* Photo */}
               <div className="relative z-10">
@@ -65,9 +65,9 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Constellation cards */}
+              {/* Constellation cards — desktop only (absolute positioned) */}
               {/* Top center */}
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '0.3s' }}>
+              <div className="hidden lg:block absolute -top-1 left-1/2 -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '0.3s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-brand-600 flex items-center justify-center shrink-0">
                     <TrendingUp size={18} className="text-white" />
@@ -80,7 +80,7 @@ export default function Hero() {
               </div>
 
               {/* Right upper */}
-              <div className="absolute top-[25%] -right-2 sm:-right-6 z-20 constellation-card" style={{ animationDelay: '1.1s' }}>
+              <div className="hidden lg:block absolute top-[25%] -right-6 z-20 constellation-card" style={{ animationDelay: '1.1s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-violet-500 flex items-center justify-center shrink-0">
                     <BarChart3 size={18} className="text-white" />
@@ -93,7 +93,7 @@ export default function Hero() {
               </div>
 
               {/* Right lower */}
-              <div className="absolute top-[58%] -right-3 sm:-right-8 z-20 constellation-card" style={{ animationDelay: '0.7s' }}>
+              <div className="hidden lg:block absolute top-[58%] -right-8 z-20 constellation-card" style={{ animationDelay: '0.7s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-rose-500 flex items-center justify-center shrink-0">
                     <Target size={18} className="text-white" />
@@ -106,7 +106,7 @@ export default function Hero() {
               </div>
 
               {/* Bottom center */}
-              <div className="absolute -bottom-1 left-[35%] -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '1.5s' }}>
+              <div className="hidden lg:block absolute -bottom-1 left-[35%] -translate-x-1/2 z-20 constellation-card" style={{ animationDelay: '1.5s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0">
                     <Search size={18} className="text-white" />
@@ -119,7 +119,7 @@ export default function Hero() {
               </div>
 
               {/* Left upper */}
-              <div className="absolute top-[18%] -left-2 sm:-left-6 z-20 constellation-card" style={{ animationDelay: '0.5s' }}>
+              <div className="hidden lg:block absolute top-[18%] -left-6 z-20 constellation-card" style={{ animationDelay: '0.5s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center shrink-0">
                     <RefreshCw size={18} className="text-white" />
@@ -132,7 +132,7 @@ export default function Hero() {
               </div>
 
               {/* Left lower */}
-              <div className="absolute top-[52%] -left-3 sm:-left-8 z-20 constellation-card" style={{ animationDelay: '1.3s' }}>
+              <div className="hidden lg:block absolute top-[52%] -left-8 z-20 constellation-card" style={{ animationDelay: '1.3s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-sky-500 flex items-center justify-center shrink-0">
                     <Mail size={18} className="text-white" />
@@ -145,7 +145,7 @@ export default function Hero() {
               </div>
 
               {/* Top left */}
-              <div className="absolute top-[5%] left-0 sm:-left-2 z-20 constellation-card" style={{ animationDelay: '0.9s' }}>
+              <div className="hidden lg:block absolute top-[5%] -left-2 z-20 constellation-card" style={{ animationDelay: '0.9s' }}>
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
                   <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center shrink-0">
                     <Megaphone size={18} className="text-white" />
@@ -156,6 +156,29 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Constellation cards — mobile only (grid below image) */}
+            <div className="lg:hidden grid grid-cols-2 gap-2.5 mt-4 w-full max-w-md">
+              {[
+                { icon: TrendingUp, bg: "bg-brand-600", title: "Growth", sub: "Strategy" },
+                { icon: BarChart3, bg: "bg-violet-500", title: "Data", sub: "Analytics" },
+                { icon: Target, bg: "bg-rose-500", title: "Paid Ads", sub: "Acquisition" },
+                { icon: Search, bg: "bg-emerald-500", title: "SEO", sub: "Organique" },
+                { icon: RefreshCw, bg: "bg-amber-500", title: "Conversion", sub: "Optimisation" },
+                { icon: Mail, bg: "bg-sky-500", title: "Automation", sub: "Email & CRM" },
+                { icon: Megaphone, bg: "bg-orange-500", title: "Marketing", sub: "Digital" },
+              ].map((card, i) => (
+                <div key={i} className="flex items-center gap-2.5 px-3.5 py-2.5 bg-white/80 backdrop-blur-md rounded-xl shadow-soft-md border border-warm-200/60 animate-fade-in" style={{ animationDelay: `${0.3 + i * 0.1}s` }}>
+                  <div className={`w-8 h-8 rounded-lg ${card.bg} flex items-center justify-center shrink-0`}>
+                    <card.icon size={15} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-[0.8rem] font-semibold text-warm-900 leading-tight">{card.title}</div>
+                    <div className="text-[0.7rem] text-warm-500 leading-tight">{card.sub}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { MessageCircle, X, Send, Clock, Linkedin, Mail } from "lucide-react";
+import { MessageCircle, X, Send, Clock, Linkedin, Mail, Phone } from "lucide-react";
 import { contactContent, siteConfig } from "@/data/content";
 
 export default function FloatingContact() {
@@ -40,7 +40,7 @@ export default function FloatingContact() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 bg-white border border-warm-300 rounded-xl text-warm-900 placeholder:text-warm-400 transition-all duration-200 focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100 text-[0.9rem]";
+    "w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-white/40 transition-all duration-200 focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-400/30 text-[0.9rem]";
 
   return (
     <>
@@ -97,7 +97,7 @@ export default function FloatingContact() {
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 bg-white/8 rounded-full border border-white/10">
               <Mail size={12} className="text-brand-400" />
-              <span className="text-[0.72rem] font-medium text-white/60">Réponse sous 24h</span>
+              <span className="text-[0.72rem] font-medium text-white/60">Réponse rapide</span>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export default function FloatingContact() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="fc-name" className="block text-[0.78rem] font-medium text-white/50 mb-1.5">
+                  <label htmlFor="fc-name" className="block text-[0.78rem] font-medium text-white mb-1.5">
                     {contactContent.formFields.name}
                   </label>
                   <input
@@ -120,7 +120,7 @@ export default function FloatingContact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="fc-email" className="block text-[0.78rem] font-medium text-white/50 mb-1.5">
+                  <label htmlFor="fc-email" className="block text-[0.78rem] font-medium text-white mb-1.5">
                     {contactContent.formFields.email}
                   </label>
                   <input
@@ -136,7 +136,7 @@ export default function FloatingContact() {
               </div>
 
               <div>
-                <label htmlFor="fc-company" className="block text-[0.78rem] font-medium text-white/50 mb-1.5">
+                <label htmlFor="fc-company" className="block text-[0.78rem] font-medium text-white mb-1.5">
                   {contactContent.formFields.company}
                 </label>
                 <input
@@ -150,7 +150,7 @@ export default function FloatingContact() {
               </div>
 
               <div>
-                <label htmlFor="fc-message" className="block text-[0.78rem] font-medium text-white/50 mb-1.5">
+                <label htmlFor="fc-message" className="block text-[0.78rem] font-medium text-white mb-1.5">
                   {contactContent.formFields.message}
                 </label>
                 <textarea
@@ -189,23 +189,39 @@ export default function FloatingContact() {
 
           {/* Footer links */}
           <div className="relative z-10 px-6 py-4 border-t border-white/10 space-y-3">
-            <p className="text-center text-[0.75rem] text-white/30 font-medium">Ou contactez-moi directement</p>
-            <div className="flex gap-3">
+            <p className="text-center text-[0.75rem] text-white font-medium">Ou contactez-moi directement</p>
+            <div className="flex flex-col gap-2">
               <a
                 href={siteConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0A66C2]/15 border border-[#0A66C2]/30 text-[#5B9BD5] hover:bg-[#0A66C2]/25 hover:text-white transition-all duration-200 text-[0.82rem] font-medium"
+                className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#0A66C2] text-white hover:bg-[#0854a0] transition-all duration-200"
               >
-                <Linkedin size={15} />
-                LinkedIn
+                <Linkedin size={14} className="shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-[0.65rem] font-medium text-white/70 leading-tight">LinkedIn</p>
+                  <p className="text-[0.78rem] font-semibold truncate leading-tight">linkedin.com/in/thibault-gomez</p>
+                </div>
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/8 border border-white/15 text-white/70 hover:bg-white/15 hover:text-white transition-all duration-200 text-[0.82rem] font-medium"
+                className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-violet-500 text-white hover:bg-violet-600 transition-all duration-200"
               >
-                <Mail size={15} />
-                {siteConfig.email}
+                <Mail size={14} className="shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-[0.65rem] font-medium text-white/70 leading-tight">Email</p>
+                  <p className="text-[0.78rem] font-semibold truncate leading-tight">{siteConfig.email}</p>
+                </div>
+              </a>
+              <a
+                href="tel:+33623520550"
+                className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-rose-500 text-white hover:bg-rose-600 transition-all duration-200"
+              >
+                <Phone size={14} className="shrink-0" />
+                <div>
+                  <p className="text-[0.65rem] font-medium text-white/70 leading-tight">Téléphone</p>
+                  <p className="text-[0.78rem] font-semibold leading-tight">06.23.52.05.50</p>
+                </div>
               </a>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import { Search, ShoppingCart, MousePointerClick, CheckCircle2, Lightbulb, Zap, LayoutDashboard, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
@@ -27,6 +27,26 @@ export default function CaseStudies() {
   const next = useCallback(() => {
     setCurrent((c) => (c === total - 1 ? 0 : c + 1));
   }, [total]);
+
+  const touchStart = useRef(0);
+  const touchEnd = useRef(0);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = e.targetTouches[0].clientX;
+    touchEnd.current = e.targetTouches[0].clientX;
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    touchEnd.current = e.targetTouches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    const diff = touchStart.current - touchEnd.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  }, [next, prev]);
 
   const accent = caseStyles[current];
 
@@ -58,7 +78,12 @@ export default function CaseStudies() {
           </button>
 
           {/* Carousel */}
-          <div className="overflow-hidden">
+          <div
+            className="overflow-hidden touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${current * 100}%)` }}
@@ -71,7 +96,7 @@ export default function CaseStudies() {
                     <div className="bg-white rounded-2xl border border-warm-200/60 shadow-soft-md overflow-hidden">
                       <div className={`h-1.5 ${style.bg}`} />
 
-                      <div className="grid lg:grid-cols-[1fr_400px] gap-6 lg:gap-10 p-6 lg:p-10">
+                      <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_400px] gap-6 lg:gap-10 p-6 lg:p-10">
                         {/* Content */}
                         <div>
                           {/* Header */}

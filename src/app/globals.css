@@ -48,6 +48,7 @@
     @apply bg-warm-50 font-sans;
     font-weight: 500;
     color: #393c53;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -380,3 +381,12 @@
 .reveal-delay-2 { transition-delay: 200ms !important; }
 .reveal-delay-3 { transition-delay: 300ms !important; }
 .reveal-delay-4 { transition-delay: 400ms !important; }
+
+/* Disable hover scale/shadow effects on touch devices (mobile) */
+@media (hover: none) {
+  .card:hover,
+  .constellation-card:hover,
+  [class*="hover:scale"]:hover {
+    transform: none !important;
+  }
+}

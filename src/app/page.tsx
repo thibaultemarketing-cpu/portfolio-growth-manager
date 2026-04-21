@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import AboutMe from "@/components/AboutMe";
+import KeyStats from "@/components/KeyStats";
 import ValueProposition from "@/components/ValueProposition";
 import Experience from "@/components/Experience";
 import KeywordsBanner from "@/components/KeywordsBanner";
@@ -24,6 +25,7 @@ export default function Home() {
         <Hero />
         <StatsBar />
         <AboutMe />
+        <KeyStats />
         <ValueProposition />
         <Experience />
         <KeywordsBanner />

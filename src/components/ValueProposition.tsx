@@ -68,12 +68,14 @@ export default function ValueProposition() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section id="value" className="section-padding bg-warm-200/60" ref={sectionRef}>
-      <div className="section-container">
+    <section id="value" className="relative section-padding overflow-hidden" ref={sectionRef}>
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#141210_0%,#1c1714_25%,#2d2824_50%,#2A32BF_85%,#3a3fd4_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.06),transparent_60%)]" />
+      <div className="relative z-10 section-container">
         <div className="reveal reveal-up">
-          <SectionHeader
-            title={valuePropositions.title}
-          />
+          <div className="text-center mb-10">
+            <h2 className="text-display-sm lg:text-display-md font-bold text-white mb-3">{valuePropositions.title}</h2>
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
@@ -81,7 +83,7 @@ export default function ValueProposition() {
             const Icon = iconMap[item.icon] || TrendingUp;
             const color = iconColors[i % iconColors.length];
             return (
-              <div key={i} className="card group reveal reveal-scale-up">
+              <div key={i} className="bg-white rounded-2xl border border-white/20 shadow-soft-md p-6 group reveal reveal-scale-up hover:shadow-soft-lg hover:scale-[1.01] transition-all duration-300">
                 <div className={`w-10 h-10 rounded-xl ${color.bg} ${color.hover} flex items-center justify-center mb-5 transition-colors`}>
                   <Icon size={20} className="text-white" />
                 </div>
